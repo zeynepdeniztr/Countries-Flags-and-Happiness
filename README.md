@@ -75,39 +75,26 @@ Steps:
 
 ## Data Analysis  
 
-### 1. **Data Preprocessing**  
-- Clean and organize both datasets for analysis.  
-- **Standardize country names** to ensure they match across both datasets.  
-- **Select relevant features** from each dataset (flag features, happiness score, GDP, etc.).  
-- **Handle missing values** appropriately (imputation or removal if necessary).  
-- **Merge datasets** on country names to create a combined dataset for analysis.  
-
----
+### 1. **Data Cleaning**  
+- Fix country name mismatches between datasets.  
+- Select relevant features (flag colors, symbols, happiness score, GDP, etc.).  
+- Handle missing values and merge datasets into one.  
 
 ### 2. **Exploratory Data Analysis (EDA)**  
-- Analyze **distribution of flag features** (colors, symbols, patterns).
-- Analyze **frequency of some specific symbols** (✝️ ☪️ ⭐ ⚒️) and their relationship with happiness and GDP.
-- **Visualize happiness scores and GDP** using various flag features.  
-- Explore how flag elements (e.g., color, religious symbols) differ between **continents, regions, and income levels**.  
-- Determine **initial patterns** or interesting relations between flag designs and happiness or economic indicators.  
-
----
+- Explore distributions of flag features — colors, symbols, patterns.  
+- Analyze how often symbols like ✝️, ☪️, ⭐, ⚒️ appear and how they relate to happiness and GDP.  
+- Compare flag designs across continents, regions, and income levels.  
 
 ### 3. **Correlation Analysis**  
-- Examine **relationships** between flag features and happiness-related indicators.  
-- Investigate if **specific flag colors or symbols** are associated with **higher happiness scores or GDP**.  
-- Check if there are **correlations between geographic variables (landmass, zone)** and happiness.  
-
----
+- Investigate if certain flag elements (colors, symbols) are linked to higher happiness or GDP.  
+- Examine connections between geographic features (landmass, zone) and happiness.  
 
 ### 4. **Visualization**  
-- Create **visualizations** to represent trends and correlations in the data.  
-- Use **bar charts, histograms, boxplots, heatmaps, scatter plots** to explore relationships.  
-- Examples of visualizations will include:  
-  - **Average happiness score by flag color (e.g., blue vs. non-blue flags)**.  
-  - **GDP distribution for countries with and without religious symbols in flags**.  
-  - **Heatmaps showing correlation between flag complexity (number of colors, symbols) and happiness or GDP**.  
-
+- Create visualizations to show key patterns and relationships.  
+- Use bar charts, heatmaps, scatter plots.  
+- Example visuals:  
+  - Happiness scores by flag colors.  
+  - GDP comparisons for flags with vs. without religious symbols.  
 
 ---
 
