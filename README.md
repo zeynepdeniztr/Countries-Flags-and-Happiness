@@ -8,6 +8,18 @@ As someone interested in **social sciences and cultural studies**, I have always
 
 ---
 
+## Contents  
+- [Introduction](#introduction)  
+- [Motivation](#motivation)  
+- [Data Sources](#data-sources)  
+- [Data Merging Plan](#data-merging-plan)  
+- [Analysis Plan](#analysis-plan)  
+- [Possible Challenges](#possible-challenges)  
+- [Future Work](#future-work)  
+- [Tools and Technologies](#tools-and-technologies)  
+
+---
+
 ## Motivation  
 
 National flags are more than just colorful pieces of cloth — they are symbols of a country's identity, history, culture, and beliefs. As a person who has always been curious about **how culture connects to society's well-being**, I wanted to approach this question from a **data science perspective**.  
