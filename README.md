@@ -2,9 +2,9 @@
 
 ## Introduction  
 
-This project explores whether national flags — through their colors, symbols, and patterns — can reflect deeper aspects of a country, such as its **happiness, economy, and social support**.  
+This project explores whether national flags — through their colors, symbols, and patterns — may reflect deeper elements of a country, such as its **happiness, economy, and social support**.  
 
-As someone interested in **social sciences and cultural studies**, I have always been fascinated by how symbols represent societies. Flags are powerful national emblems, but do they tell us something meaningful about a country's well-being? Through this project, I aim to investigate the **relationship between flag designs and real-world indicators like happiness scores and GDP**.  
+As someone interested in **social sciences and cultural studies**, I have always been fascinated by how symbols represent societies. Flags are important national symbols, but do they tell us something meaningful about a country's well-being? Through this project, I aim to investigate the **relationship between flag designs and real-world indicators like happiness scores and GDP**.  
 
 ---
 
@@ -22,7 +22,7 @@ As someone interested in **social sciences and cultural studies**, I have always
 
 ## Motivation  
 
-National flags are more than just colorful pieces of cloth — they are symbols of a country's identity, history, culture, and beliefs. As a person who has always been curious about **how culture connects to society's well-being**, I wanted to approach this question from a **data science perspective**.  
+National flags are more than just beautiful pieces of cloth — they represent a country's identity, history, culture, and beliefs. As a person who has always been curious about **how culture connects to society's well-being**, I wanted to adress this subject from a **data science perspective**.  
 
 Some questions I am curious to explore:  
 - Are countries with **blue flags** happier on average?  
