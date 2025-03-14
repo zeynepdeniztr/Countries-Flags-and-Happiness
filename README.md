@@ -1,6 +1,6 @@
 # 🌍 Countries' Flags and Happiness: Exploring the Connection Between National Symbols and Well-being  
 
-> Sabancı University **DSA210** Introduction to Data Science Course Spring 2024-2025 Term Project.
+> Sabancı University **DSA210** Introduction to Data Science Course Spring 2024-2025 Term Project.  
 > Combining data science with social sciences to uncover insights hidden in national symbols.  
 
 
