@@ -22,16 +22,19 @@ As someone interested in **social sciences and cultural studies**, I have always
 
 ---
 
-## Motivation  
+## Motivation   
 
-National flags are more than just beautiful pieces of cloth — they represent a country's identity, history, culture, and beliefs. As a person who has always been curious about **how culture connects to society's well-being**, I wanted to adress this topic from a **data science perspective**.  
+National flags are more than just beautiful pieces of cloth — they represent a country's identity, history, culture, and beliefs. As a person who has always been curious about **how culture connects to society's well-being**, I wanted to address this topic from a **data science perspective**.  
 
 Some questions I am curious to explore:  
 - Are countries with **blue flags** happier on average?  
 - Do **religious symbols** in flags reflect differences in GDP or happiness?  
 - Are there visible patterns in flag designs based on **geographic regions or economic status**?  
 
-Although there are studies about the cultural and political meaning of flags, **there is little to no data-driven research**into how flag aspects link to social variables such as happiness. That makes this a **creative and original** project combining data science with social science.  
+Flags often feature powerful symbols such as ✝️ (cross), ☪️ (crescent), ⭐ (star), ⚒️ (hammer & sickle), which might reflect a country's identity and possibly correlate with happiness and well-being.  
+
+Although there are studies about the cultural and political meaning of flags, **there is little to no data-driven research** into how flag aspects link to social variables such as happiness. That makes this a **creative and original** project combining data science with social science.  
+ 
 
 ---
 
@@ -41,7 +44,7 @@ Although there are studies about the cultural and political meaning of flags, **
    - **Source**: [Kaggle - World Flags](https://www.kaggle.com/datasets/edoardoba/world-flags)  
    - **Description**: Contains features of flags from 193 countries, including:  
      - Colors (red, blue, green, etc.)  
-     - Symbols (religious symbols, crosses, etc.)  
+     - Symbols: ✝️ (Cross), ☪️ (Crescent), ⭐ (Star), ⚒️ (Hammer & Sickle), 🔆 (Sun-like), 🦅 (Eagle), 🐉 (Dragon) ...
      - Geographic information (landmass, zone)  
      - Population, language, religion  
 
@@ -82,7 +85,8 @@ Steps:
 ---
 
 ### 2. **Exploratory Data Analysis (EDA)**  
-- Analyze **distribution of flag features** (colors, symbols, patterns).  
+- Analyze **distribution of flag features** (colors, symbols, patterns).
+- Analyze **frequency of specific symbols** (e.g., ✝️ ☪️ ⭐ ⚒️) and their relation to happiness and GDP.
 - **Visualize happiness scores and GDP** across different flag features.  
 - Explore how flag elements (e.g., color, religious symbols) vary across **continents, regions, and income levels**.  
 - Identify **initial patterns** or interesting relations between flag designs and happiness or economic indicators.  
