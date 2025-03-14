@@ -1,5 +1,10 @@
 # 🌍 Countries' Flags and Happiness: Exploring the Connection Between National Symbols and Well-being  
 
+> Sabancı University **DSA210** Introduction to Data Science Course Spring 2024-2025 Term Project.
+> Combining data science with social sciences to uncover insights hidden in national symbols.  
+
+
+
 ## Introduction  
 
 This project explores whether national flags — through their colors, symbols, and patterns — may reflect deeper elements of a country, such as its **happiness, economy, and social support**.  
@@ -9,14 +14,12 @@ As someone interested in **social sciences and cultural studies**, I have always
 ---
 
 ## Contents  
-- [Introduction](#introduction)  
 - [Motivation](#motivation)  
 - [Data Sources](#data-sources)  
 - [Data Merging Plan](#data-merging-plan)  
 - [Analysis Plan](#analysis-plan)  
 - [Possible Challenges](#possible-challenges)  
 - [Future Work](#future-work)  
-- [Tools and Technologies](#tools-and-technologies)  
 
 ---
 
@@ -67,30 +70,40 @@ Steps:
 
 ---
 
-## Analysis Plan  
+## Data Analysis  
 
-1. **Data Cleaning & Preprocessing**  
-   - Fix country name mismatches.  
-   - Select relevant features.  
-   - Handle missing values.  
+### 1. **Data Preprocessing**  
+- Clean and organize both datasets for analysis.  
+- **Standardize country names** to ensure they match across both datasets.  
+- **Select relevant features** from each dataset (flag features, happiness score, GDP, etc.).  
+- **Handle missing values** appropriately (imputation or removal if necessary).  
+- **Merge datasets** on country names to create a combined dataset for analysis.  
 
-2. **Exploratory Data Analysis (EDA)**  
-   - Distribution of flag features (colors, symbols, patterns).  
-   - Visualization of happiness scores and flag elements.  
-   - Comparing flag features across different continents or religions.  
+---
 
-3. **Hypothesis Testing**  
-   - Example hypotheses:  
-     - Do countries with blue flags have higher happiness scores?  
-     - Is there a correlation between flags with religious symbols and GDP?  
-     - Are certain colors more common in lower-income countries?  
+### 2. **Exploratory Data Analysis (EDA)**  
+- Analyze **distribution of flag features** (colors, symbols, patterns).  
+- **Visualize happiness scores and GDP** across different flag features.  
+- Explore how flag elements (e.g., color, religious symbols) vary across **continents, regions, and income levels**.  
+- Identify **initial patterns** or interesting relations between flag designs and happiness or economic indicators.  
 
-4. **(Optional)** Machine Learning Modeling  
-   - Predicting happiness score based on flag features (regression).  
-   - Predicting high/low GDP category based on flag design (classification).  
+---
 
-5. **Conclusions & Insights**  
-   - Summarizing the most interesting patterns and relationships found.  
+### 3. **Correlation Analysis**  
+- Examine **relationships** between flag features and happiness-related indicators.  
+- Investigate if **specific flag colors or symbols** are associated with **higher happiness scores or GDP**.  
+- Check if there are **correlations between geographic variables (landmass, zone)** and happiness.  
+
+---
+
+### 4. **Visualization**  
+- Create **visualizations** to represent trends and correlations in the data.  
+- Use **bar charts, histograms, boxplots, heatmaps, scatter plots** to explore relationships.  
+- Examples of visualizations will include:  
+  - **Average happiness score by flag color (e.g., blue vs. non-blue flags)**.  
+  - **GDP distribution for countries with and without religious symbols in flags**.  
+  - **Heatmaps showing correlation between flag complexity (number of colors, symbols) and happiness or GDP**.  
+
 
 ---
 
@@ -113,16 +126,3 @@ Steps:
 - Apply advanced **machine learning models** to predict social indicators from flag designs.  
 
 ---
-
-## Tools and Technologies  
-
-- **Python** (Pandas, NumPy)  
-- **Visualization**: Matplotlib, Seaborn, Plotly (optional)  
-- **Statistical Analysis**: SciPy, Statsmodels  
-- **Machine Learning (optional)**: Scikit-learn  
-
----
-
-> This project is part of **DSA210 - Introduction to Data Science, Spring 2024-2025 Term**.  
-> Combining data science with social sciences to uncover insights hidden in national symbols.  
-
