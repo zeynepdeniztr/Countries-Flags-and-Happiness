@@ -111,9 +111,9 @@ Steps:
 
 ## Future Work  
 
-- Add more datasets (e.g., Democracy Index, Human Development Index) to deepen the analysis.  
-- Include historical flag data to analyze changes over time.  
-- Explore **interactive data visualizations** (e.g., Plotly, Dash) to present findings dynamically.  
-- Apply advanced **machine learning models** to predict social indicators from flag designs.  
+- **Add more datasets**: Including data like the Democracy Index or Human Development Index could give a broader perspective on how national symbols relate to well-being.  
+- **Focus on specific regions**: Narrowing down the research to specific groups of countries (e.g., post-colonial states or Nordic countries) may reveal deeper cultural patterns.  
+- **Analyze historical flag changes**: Looking at how flag designs have evolved over time could show connections between national identity shifts and happiness.  
+- **Support findings with academic research**: Bringing in studies from political science and cultural studies would help interpret the meaning of flag elements in relation to social indicators.   
 
 ---
