@@ -1,8 +1,6 @@
-Sabancı University DSA210 Introduction to Data Science Course Fall 2024-2025 Term Project.
-
 # 🌍 Countries' Flags and Happiness: Exploring the Connection Between National Symbols and Well-being  
 
-## 📌 Introduction  
+## Introduction  
 
 This project explores whether national flags — through their colors, symbols, and patterns — can reflect deeper aspects of a country, such as its **happiness, economy, and social support**.  
 
@@ -10,7 +8,7 @@ As someone interested in **social sciences and cultural studies**, I have always
 
 ---
 
-## 🎯 Motivation  
+## Motivation  
 
 National flags are more than just colorful pieces of cloth — they are symbols of a country's identity, history, culture, and beliefs. As a person who has always been curious about **how culture connects to society's well-being**, I wanted to approach this question from a **data science perspective**.  
 
@@ -23,7 +21,7 @@ Although there are studies about the cultural and political meaning of flags, **
 
 ---
 
-## 📊 Data Sources  
+## Data Sources  
 
 1. **World Flags Dataset**  
    - **Source**: [Kaggle - World Flags](https://www.kaggle.com/datasets/edoardoba/world-flags)  
@@ -46,7 +44,7 @@ Although there are studies about the cultural and political meaning of flags, **
 
 ---
 
-## 🔗 Data Merging Plan  
+## Data Merging Plan  
 
 Since the two datasets have different country lists (193 vs. 156), I will focus on **the common countries that appear in both datasets**.  
 
@@ -57,7 +55,7 @@ Steps:
 
 ---
 
-## 📊 Analysis Plan  
+## Analysis Plan  
 
 1. **Data Cleaning & Preprocessing**  
    - Fix country name mismatches.  
@@ -84,7 +82,7 @@ Steps:
 
 ---
 
-## ⚠️ Possible Challenges  
+## Possible Challenges  
 
 | Challenge                                  | Solution                                                      |
 |--------------------------------------------|---------------------------------------------------------------|
@@ -95,7 +93,7 @@ Steps:
 
 ---
 
-## 🚀 Future Work  
+## Future Work  
 
 - Add more datasets (e.g., Democracy Index, Human Development Index) to deepen the analysis.  
 - Include historical flag data to analyze changes over time.  
@@ -104,31 +102,12 @@ Steps:
 
 ---
 
-## 💻 Tools and Technologies  
+## Tools and Technologies  
 
 - **Python** (Pandas, NumPy)  
 - **Visualization**: Matplotlib, Seaborn, Plotly (optional)  
 - **Statistical Analysis**: SciPy, Statsmodels  
 - **Machine Learning (optional)**: Scikit-learn  
-
----
-
-## ✅ Timeline  
-
-| Date           | Task                                         |
-|----------------|---------------------------------------------|
-| **March 10**   | Submit project proposal (this README)        |
-| **April 18**   | Complete data cleaning and exploratory analysis (EDA)    |
-| **May 23**     | Conduct hypothesis testing and (optional) ML modeling    |
-| **May 30**     | Final report and presentation submission     |
-
----
-
-## 📬 Contact  
-
-- **Name**: [Your Full Name]  
-- **Email**: [Your Email]  
-- **GitHub**: [Your GitHub Profile Link]  
 
 ---
 
