@@ -86,10 +86,10 @@ Steps:
 
 ### 2. **Exploratory Data Analysis (EDA)**  
 - Analyze **distribution of flag features** (colors, symbols, patterns).
-- Analyze **frequency of some specific symbols** (✝️ ☪️ ⭐ ⚒️) and their relation to happiness and GDP.
-- **Visualize happiness scores and GDP** across different flag features.  
-- Explore how flag elements (e.g., color, religious symbols) vary across **continents, regions, and income levels**.  
-- Identify **initial patterns** or interesting relations between flag designs and happiness or economic indicators.  
+- Analyze **frequency of some specific symbols** (✝️ ☪️ ⭐ ⚒️) and their relationship with happiness and GDP.
+- **Visualize happiness scores and GDP** using various flag features.  
+- Explore how flag elements (e.g., color, religious symbols) differ between **continents, regions, and income levels**.  
+- Determine **initial patterns** or interesting relations between flag designs and happiness or economic indicators.  
 
 ---
 
