@@ -25,14 +25,14 @@ As someone interested in **social sciences and cultural studies**, I have always
 
 ## Motivation  
 
-National flags are more than just beautiful pieces of cloth — they represent a country's identity, history, culture, and beliefs. As a person who has always been curious about **how culture connects to society's well-being**, I wanted to adress this subject from a **data science perspective**.  
+National flags are more than just beautiful pieces of cloth — they represent a country's identity, history, culture, and beliefs. As a person who has always been curious about **how culture connects to society's well-being**, I wanted to adress this topic from a **data science perspective**.  
 
 Some questions I am curious to explore:  
 - Are countries with **blue flags** happier on average?  
 - Do **religious symbols** in flags reflect differences in GDP or happiness?  
 - Are there visible patterns in flag designs based on **geographic regions or economic status**?  
 
-Although there are studies about the cultural and political meaning of flags, **there is little to no data-driven research** exploring how flag elements relate to social indicators like happiness. That makes this a **creative and original** project combining data science with social science.  
+Although there are studies about the cultural and political meaning of flags, **there is little to no data-driven research**into how flag aspects link to social variables such as happiness. That makes this a **creative and original** project combining data science with social science.  
 
 ---
 
@@ -61,7 +61,8 @@ Although there are studies about the cultural and political meaning of flags, **
 
 ## Data Merging Plan  
 
-Since the two datasets have different country lists (193 vs. 156), I will focus on **the common countries that appear in both datasets**.  
+- Since the two datasets have different country lists (193 vs. 156), I will focus on **the common countries that appear in both datasets**.  
+-Since the country names do not match exactly between datasets (e.g., 'UK' vs. 'United Kingdom'), I plan to handle this issue using manual mapping and fuzzy matching techniques to ensure proper alignment for analysis.
 
 Steps:  
 1. **Standardize country names** to match them correctly.  
