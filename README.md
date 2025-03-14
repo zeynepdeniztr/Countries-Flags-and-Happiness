@@ -17,7 +17,6 @@ As someone interested in **social sciences and cultural studies**, I have always
 - [Motivation](#motivation)  
 - [Data Sources](#data-sources)  
 - [Data Merging Plan](#data-merging-plan)  
-- [Analysis Plan](#analysis-plan)  
 - [Possible Challenges](#possible-challenges)  
 - [Future Work](#future-work)  
 
