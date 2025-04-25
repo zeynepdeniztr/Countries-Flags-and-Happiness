@@ -118,10 +118,10 @@ Steps:
 
 ---
 
-Hypothesis Testing
+Hypothesis Testing:
 I tested whether the level of Freedom significantly affects the Happiness Score.
 
-Hypotheses
+Hypotheses:
 H₀: Freedom and Happiness Score are independent.
 
 H₁: There is a significant positive correlation between Freedom and Happiness Score.
