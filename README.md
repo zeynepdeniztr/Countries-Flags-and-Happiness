@@ -117,3 +117,30 @@ Steps:
 - **Support findings with academic research**: Bringing in studies from political science and cultural studies would help interpret the meaning of flag elements in relation to social indicators.   
 
 ---
+
+Hypothesis Testing
+I tested whether the level of Freedom significantly affects the Happiness Score.
+
+Hypotheses
+H₀: Freedom and Happiness Score are independent.
+
+H₁: There is a significant positive correlation between Freedom and Happiness Score.
+
+Method
+Test Used: Pearson Correlation Test
+
+Variables: Freedom, Happiness Score
+
+Tool: scipy.stats.pearsonr
+
+Result
+Correlation coefficient (r): 0.6429
+
+P-value: < 0.0001
+
+The result is statistically SIGNIFICANT (p < 0.05)
+
+Conclusion
+We reject the null hypothesis.
+Countries with higher freedom tend to have higher happiness scores.
+
