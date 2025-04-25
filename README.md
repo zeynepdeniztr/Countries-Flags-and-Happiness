@@ -133,14 +133,15 @@ Variables: Freedom, Happiness Score
 
 Tool: scipy.stats.pearsonr
 
-Result
+Result: 
 Correlation coefficient (r): 0.6429
 
 P-value: < 0.0001
-
+So..
 The result is statistically SIGNIFICANT (p < 0.05)
 
-Conclusion
+Conclusion:
+
 We reject the null hypothesis.
 Countries with higher freedom tend to have higher happiness scores.
 
