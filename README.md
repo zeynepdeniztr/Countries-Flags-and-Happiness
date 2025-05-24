@@ -1,3 +1,4 @@
+
 # Countries' Flags and Happiness: Exploring the Connection Between National Symbols and Well-being
 
 > Sabancı University **DSA210** Introduction to Data Science Course Spring 2024-2025 Term Project.  
@@ -18,10 +19,11 @@ In the updated version, I applied **machine learning models** to see whether fla
 ## Contents  
 - [Motivation](#motivation)  
 - [Data Sources](#data-sources)  
-- [Data Merging Plan](#data-merging-plan)  
-- [Data Analysis](#data-analysis)  
-- [Machine Learning Model](#machine-learning-model)  
+- [Data Merging Plan](#data-merging-plan)
 - [Challenges](#possible-challenges)  
+- [Data Analysis](#data-analysis)
+- [Machine Learning Model](#machine-learning-model)
+- [Results](#results)  
 - [Future Work](#future-work)  
 
 ---
@@ -70,6 +72,17 @@ Steps:
 
 ---
 
+## Possible Challenges  
+
+| Challenge                              | Solution                                  |
+|----------------------------------------|-------------------------------------------|
+| Country name mismatches                | Normalization and manual corrections      |
+| Dataset size differences               | Focused on common countries               |
+| Flags contain categorical/symbol data  | Binary encoding used                      |
+| Low correlation between flags and happiness | Highlighted in results and future work |
+
+---
+
 ## Data Analysis
 
 ### 1. Data Cleaning  
@@ -84,15 +97,26 @@ Steps:
 - **Correlation Heatmap**: Explored inter-variable relations.
 - **Freedom vs Happiness Scatterplot**: Showed clear positive correlation.
 
-### Histogram of Happiness Scores
-![Happiness Histogram](happiness_histogram.png)
+## Data Analysis & EDA
 
-### Top 15 Happiest Countries
-![Top 15 Happiest Countries](top15_happiness.png)
+After cleaning, standardizing country names, and merging the datasets (104 common countries), we conducted visual analyses to uncover patterns.
 
-### Correlation Heatmap
-![Correlation Heatmap](correlation_heatmap.png)
+### 1. Distribution of Happiness Score
 
+![](happiness_histogram.png)
+**Comment:** The histogram reveals a roughly normal distribution of happiness scores, with most countries scoring between 4 and 6. Few nations fall below 3 or above 7, indicating extreme well-being values are rare.
+
+### 2. Top 15 Happiest Countries
+
+![](top15_happiness.png)
+**Comment:** Switzerland, Iceland, and Denmark lead with scores above 7. The narrow range among the top five highlights that these nations share high social support, robust economies, and quality healthcare.
+
+### 3. Top Correlated Features with Happiness Score
+
+![](correlation_heatmap.png)
+**Comment:** The heatmap focuses on the eight most correlated variables. Economic wealth (GDP per Capita) and Family support exhibit the strongest positive ties (r≈+0.79, +0.76), followed by Health (r≈+0.74) and Freedom (r≈+0.64). Flag‑specific colors and symbols do not appear, suggesting minimal direct impact on happiness.
+
+---
 ### 3. Hypothesis Testing: Freedom vs Happiness
 - **Null Hypothesis**: Freedom and Happiness are not correlated.
 - **Alternative Hypothesis**: There is a positive correlation.
@@ -100,6 +124,30 @@ Steps:
   - r = 0.6429
   - p < 0.0001
 - **Conclusion**: Reject null. Freedom positively correlates with Happiness.
+
+---
+
+## Data Analysis & EDA
+
+After cleaning, standardizing country names, and merging the datasets (104 common countries), we conducted several visual analyses to uncover patterns in the data.
+
+**1. Distribution of Happiness Score**
+![](happiness_histogram.png)
+**Comment:** The histogram above shows that the bulk of countries score between 4 and 6 on the Happiness Scale, with a gentle bell‑curve shape and a few outliers at the low and high extremes. The histogram reveals a roughly normal distribution of happiness scores, with most countries scoring between 4 and 6. Few nations fall below 3 or above 7, indicating extreme well-being values are rare.
+
+**2. Top 15 Happiest Countries**
+![](top15_happiness.png)
+**Comment:** This horizontal bar chart identifies Switzerland, Iceland, and Denmark at the top, each scoring above 7.0. The tight clustering of the top five countries (Switzerland, Iceland, Denmark, Norway, Canada) emphasizes consistently high well-being in these regions, likely driven by strong social support, economic stability, and quality of life factors.
+
+**3. Top Correlated Features with Happiness Score**
+![](correlation_heatmap.png)
+**Comment:** The heatmap focuses on the eight most correlated variables. Economic wealth (GDP per Capita) and Family support exhibit the strongest positive ties (r≈+0.79, +0.76), followed by Health (r≈+0.74) and Freedom (r≈+0.64). Flag‑specific colors and symbols do not appear, suggesting minimal direct impact on happiness. The condensed heatmap displays the eight features most strongly linked to happiness.
+
+* **GDP per Capita (r≈0.79)** and **Family Support (r≈0.76)** show the highest correlations, underscoring the role of economic prosperity and social networks.
+* **Health (r≈0.74)** and **Freedom (r≈0.64)** also contribute positively, reflecting life expectancy and personal autonomy as key drivers.
+* Flag‑specific attributes (colors, symbols) do not appear in this top‑8 list, indicating they have minimal direct association with national happiness.
+
+These visual insights guide our hypothesis testing and model development in the following sections.
 
 ---
 
@@ -130,50 +178,7 @@ To predict a country's happiness score based on flag features (colors and symbol
 
 ---
 
-## Possible Challenges  
-
-| Challenge                              | Solution                                  |
-|----------------------------------------|-------------------------------------------|
-| Country name mismatches                | Normalization and manual corrections      |
-| Dataset size differences               | Focused on common countries               |
-| Flags contain categorical/symbol data  | Binary encoding used                      |
-| Low correlation between flags and happiness | Highlighted in results and future work |
-
----
-
-
-
-## Data Analysis & EDA
-
-After cleaning, standardizing country names, and merging the datasets (104 common countries), we perform exploratory visualizations:
-
-
----
-
-
-## Data Analysis & EDA
-
-After cleaning, standardizing country names, and merging the datasets (104 common countries), we conducted several visual analyses to uncover patterns in the data.
-
-**1. Distribution of Happiness Score**
-![](happiness_histogram.png)
-The histogram above shows that the bulk of countries score between 4 and 6 on the Happiness Scale, with a gentle bell‑curve shape and a few outliers at the low and high extremes. This suggests a relatively normal distribution of well-being across nations, highlighting that very low (<3) or very high (>7) scores are uncommon.
-
-**2. Top 15 Happiest Countries**
-![](top15_happiness.png)
-This horizontal bar chart identifies Switzerland, Iceland, and Denmark at the top, each scoring above 7.0. The tight clustering of the top five countries (Switzerland, Iceland, Denmark, Norway, Canada) emphasizes consistently high well-being in these regions, likely driven by strong social support, economic stability, and quality of life factors.
-
-**3. Top Correlated Features with Happiness Score**
-![](correlation_heatmap.png)
-The condensed heatmap displays the eight features most strongly linked to happiness.
-
-* **GDP per Capita (r≈0.79)** and **Family Support (r≈0.76)** show the highest correlations, underscoring the role of economic prosperity and social networks.
-* **Health (r≈0.74)** and **Freedom (r≈0.64)** also contribute positively, reflecting life expectancy and personal autonomy as key drivers.
-* Flag‑specific attributes (colors, symbols) do not appear in this top‑8 list, indicating they have minimal direct association with national happiness.
-
-These visual insights guide our hypothesis testing and model development in the following sections.
-
-## Hypothesis Testing (General) (General) (General)
+## Hypothesis Testing (General)
 
 We tested each flag feature and socio-economic indicator for statistical correlation with happiness scores. Key findings:
 
@@ -183,7 +188,7 @@ We tested each flag feature and socio-economic indicator for statistical correla
 * **Freedom**: moderate positive correlation (r ≈ +0.64, p < 0.0001)
 * **Flag colors & symbols**: no significant correlations (p > 0.05)
 
-**Conclusion:** Reject H₀ for socio-economic indicators. Flag‐specific features alone do not significantly correlate with happiness. Socio-economic factors are significantly linked to happiness, whereas individual flag features do not show meaningful direct associations. 
+**Conclusion:** We reject H₀ for socio-economic indicators. Flag‐specific features alone do not significantly correlate with happiness. Socio-economic factors are significantly linked to happiness, whereas individual flag features do not show meaningful direct associations. 
 
 ---
 
@@ -213,7 +218,7 @@ These results confirm that flag design alone offers limited power for predicting
 
 ---
 
-*This interdisciplinary project underscores the nuanced relationship between symbolic national imagery and measurable well-being indicators.*
+*This interdisciplinary exploration highlights how social indicators — more than symbolic flag designs — drive national well-being.*
 
 
 ---
