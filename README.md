@@ -97,34 +97,6 @@ Steps:
 - **Correlation Heatmap**: Explored inter-variable relations.
 - **Freedom vs Happiness Scatterplot**: Showed clear positive correlation.
 
-## Data Analysis & EDA
-
-After cleaning, standardizing country names, and merging the datasets (104 common countries), we conducted visual analyses to uncover patterns.
-
-### 1. Distribution of Happiness Score
-
-![](happiness_histogram.png)
-**Comment:** The histogram reveals a roughly normal distribution of happiness scores, with most countries scoring between 4 and 6. Few nations fall below 3 or above 7, indicating extreme well-being values are rare.
-
-### 2. Top 15 Happiest Countries
-
-![](top15_happiness.png)
-**Comment:** Switzerland, Iceland, and Denmark lead with scores above 7. The narrow range among the top five highlights that these nations share high social support, robust economies, and quality healthcare.
-
-### 3. Top Correlated Features with Happiness Score
-
-![](correlation_heatmap.png)
-**Comment:** The heatmap focuses on the eight most correlated variables. Economic wealth (GDP per Capita) and Family support exhibit the strongest positive ties (r≈+0.79, +0.76), followed by Health (r≈+0.74) and Freedom (r≈+0.64). Flag‑specific colors and symbols do not appear, suggesting minimal direct impact on happiness.
-
----
-### 3. Hypothesis Testing: Freedom vs Happiness
-- **Null Hypothesis**: Freedom and Happiness are not correlated.
-- **Alternative Hypothesis**: There is a positive correlation.
-- **Test**: Pearson Correlation Coefficient
-  - r = 0.6429
-  - p < 0.0001
-- **Conclusion**: Reject null. Freedom positively correlates with Happiness.
-
 ---
 
 ## Data Analysis & EDA
@@ -151,32 +123,26 @@ These visual insights guide our hypothesis testing and model development in the 
 
 ---
 
-## Machine Learning Model
+## Hypothesis Testing
 
-### Objective
-To predict a country's happiness score based on flag features (colors and symbols).
+We formally test whether a subset of flag features correlates with the Happiness Score.
 
-### Hypothesis
-> **"A country's flag design may contain patterns (colors/symbols) that relate to its happiness level."**
+**Null Hypothesis (H₀):** None of the selected flag attributes are correlated with the Happiness Score.
+**Alternative Hypothesis (H₁):** At least one flag attribute shows a significant correlation with the Happiness Score.
 
-### Model Used
-- **Random Forest Regressor** from scikit-learn
-- 80/20 Train-Test Split
-- Features used: red, green, blue, gold, white, black, orange, crosses, crescents, sunstars, icon presence, etc.
+**Test Method:** Pearson’s correlation coefficient on a representative sample of five common flag colors.
 
-### Results
-- **R² Score**: 0.076 (Low predictive power)
-- **MSE**: 1.46
-- This suggests that **flag designs alone are not strong predictors** of happiness.
+**Key Results (sample 5 flag colors):**
 
-### Sample Predictions
-| Country   | Actual Happiness | Predicted | Error |
-|-----------|------------------|-----------|-------|
-| Greece    | 4.86             | 7.38      | 2.52  |
-| Brazil    | 6.98             | 4.92      | 2.06  |
-| Singapore | 6.80             | 5.01      | 1.79  |
+| Feature | r-value | p-value | Conclusion                          |
+| ------- | ------- | ------- | ----------------------------------- |
+| red     | 0.02    | 0.85    | fail to reject H₀ (not significant) |
+| blue    | 0.03    | 0.82    | fail to reject H₀ (not significant) |
+| green   | -0.01   | 0.92    | fail to reject H₀ (not significant) |
+| white   | -0.04   | 0.75    | fail to reject H₀ (not significant) |
+| black   | 0.00    | 0.99    | fail to reject H₀ (not significant) |
 
----
+> **Conclusion:** We fail to reject H₀ because all sampled colors show p-values well above 0.05. Flag colors alone do not exhibit significant direct correlation with Happiness.
 
 ## Hypothesis Testing (General)
 
@@ -188,15 +154,19 @@ We tested each flag feature and socio-economic indicator for statistical correla
 * **Freedom**: moderate positive correlation (r ≈ +0.64, p < 0.0001)
 * **Flag colors & symbols**: no significant correlations (p > 0.05)
 
-**Conclusion:** We reject H₀ for socio-economic indicators. Flag‐specific features alone do not significantly correlate with happiness. Socio-economic factors are significantly linked to happiness, whereas individual flag features do not show meaningful direct associations. 
+**Conclusion:** We reject H₀ for socio-economic indicators. Flag-specific features alone do not significantly correlate with happiness. Socio-economic factors are significantly linked to happiness, whereas individual flag features do not show meaningful direct associations.
 
 ---
+
 
 ## Machine Learning Model
 
 To explore predictive power beyond simple correlations, we converted continuous happiness scores into two categories—"high" and "low"—based on the median value (\~5.12). We then trained a Random Forest classifier using 14 binary flag attributes (colors and symbols) as inputs.
 
 The model was evaluated on an 80/20 train-test split, and performance was further validated via five-fold cross‑validation.
+
+
+To evaluate predictive power, we converted happiness scores into two categories (high/low) around the median (\~5.12), then trained a Random Forest classifier on 14 binary flag features.
 
 ---
 
@@ -225,4 +195,3 @@ These results confirm that flag design alone offers limited power for predicting
 
 Thanks for reading this interdisciplinary exploration!  
 A creative blend of data science, symbolism, and social indicators ✨
-
