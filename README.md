@@ -84,6 +84,15 @@ Steps:
 - **Correlation Heatmap**: Explored inter-variable relations.
 - **Freedom vs Happiness Scatterplot**: Showed clear positive correlation.
 
+### Histogram of Happiness Scores
+![Happiness Histogram](happiness_histogram.png)
+
+### Top 15 Happiest Countries
+![Top 15 Happiest Countries](top15_happiness.png)
+
+### Correlation Heatmap
+![Correlation Heatmap](correlation_heatmap.png)
+
 ### 3. Hypothesis Testing: Freedom vs Happiness
 - **Null Hypothesis**: Freedom and Happiness are not correlated.
 - **Alternative Hypothesis**: There is a positive correlation.
