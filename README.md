@@ -1,9 +1,9 @@
-# Countries' Flags and Happiness: Exploring the Connection Between National Symbols and Well-being  
+# Countries' Flags and Happiness: Exploring the Connection Between National Symbols and Well-being
 
 > Sabancı University **DSA210** Introduction to Data Science Course Spring 2024-2025 Term Project.  
 > Combining data science with social sciences to uncover insights hidden in national symbols.  
 
-
+---
 
 ## Introduction  
 
@@ -11,13 +11,17 @@ This project explores whether national flags — through their colors, symbols, 
 
 As someone interested in **social sciences and cultural studies**, I have always been fascinated by how symbols represent societies. Flags are important national symbols, but do they tell us something meaningful about a country's well-being? Through this project, I aim to investigate the **relationship between flag designs and real-world indicators like happiness scores and GDP**.  
 
+In the updated version, I applied **machine learning models** to see whether flag features can predict happiness scores and selected specific test cases to evaluate prediction quality.
+
 ---
 
 ## Contents  
 - [Motivation](#motivation)  
 - [Data Sources](#data-sources)  
 - [Data Merging Plan](#data-merging-plan)  
-- [Possible Challenges](#possible-challenges)  
+- [Data Analysis](#data-analysis)  
+- [Machine Learning Model](#machine-learning-model)  
+- [Challenges](#possible-challenges)  
 - [Future Work](#future-work)  
 
 ---
@@ -31,10 +35,7 @@ Some questions I am curious to explore:
 - Do **religious symbols** in flags reflect differences in GDP or happiness?  
 - Are there visible patterns in flag designs based on **geographic regions or economic status**?  
 
-Flags often feature powerful symbols such as ✝️ (cross), ☪️ (crescent), ⭐ (star), ⚒️ (hammer & sickle), which might reflect a country's identity and possibly correlate with happiness and well-being.  
-
 Although there are studies about the cultural and political meaning of flags, **there is little to no data-driven research** into how flag aspects link to social variables such as happiness. That makes this a **creative and original** project combining data science with social science.  
- 
 
 ---
 
@@ -44,104 +45,102 @@ Although there are studies about the cultural and political meaning of flags, **
    - **Source**: [Kaggle - World Flags](https://www.kaggle.com/datasets/edoardoba/world-flags)  
    - **Description**: Contains features of flags from 193 countries, including:  
      - Colors (red, blue, green, etc.)  
-     - Symbols: ✝️ (Cross), ☪️ (Crescent), ⭐ (Star), ⚒️ (Hammer & Sickle), 🔆 (Sun-like), 🦅 (Eagle), 🐉 (Dragon) ...
-     - Geographic information (landmass, zone)  
-     - Population, language, religion  
+     - Symbols: ✝️ (Cross), ☪ (Crescent), ⭐ (Star), ⚒️ (Hammer & Sickle), 🌆 (Sun-like), 🦅 (Eagle), 🐉 (Dragon)
+     - Geographic info: landmass, zone, population, language, religion  
 
-2. **World Happiness Report 2019**  
+2. **World Happiness Report (2015)**  
    - **Source**: [Kaggle - World Happiness Report](https://www.kaggle.com/unsdsn/world-happiness)  
-   - **Description**: Contains happiness scores and detailed well-being indicators for 156 countries, such as:  
+   - **Description**: Provides happiness scores and well-being metrics for 158 countries:  
      - Happiness score  
      - GDP per capita  
      - Social support  
      - Healthy life expectancy  
      - Freedom to make life choices  
-     - Generosity  
-     - Perceptions of corruption  
+     - Generosity, Corruption perception
 
 ---
 
 ## Data Merging Plan  
 
-- Since the two datasets have different country lists (193 vs. 156), I will focus on **the common countries that appear in both datasets**.  
--Since the country names do not match exactly between datasets (e.g., 'UK' vs. 'United Kingdom'), I plan to handle this issue using manual mapping and fuzzy matching techniques to ensure proper alignment for analysis.
-
 Steps:  
-1. **Standardize country names** to match them correctly.  
-2. **Merge the datasets** on country names.  
-3. Handle missing data if necessary.  
+1. **Standardized country names** by stripping whitespaces and lowering case.  
+2. **Merged datasets** based on country names.  
+3. Selected countries with happiness score and valid flag feature data.  
+4. Handled `;`-delimited flags.csv and cleaned column names for consistency.
 
 ---
 
-## Data Analysis  
+## Data Analysis
 
-### 1. **Data Cleaning**  
-- Fix country name mismatches between datasets.  
-- Select relevant features (flag colors, symbols, happiness score, GDP, etc.).  
-- Handle missing values and merge datasets into one.  
+### 1. Data Cleaning  
+- Fixed mismatches between country names (e.g., "USA" vs "United States").
+- Selected relevant features such as flag color/symbol counts and happiness score.
+- Ensured proper encoding and handling of numeric/categorical features.
 
-### 2. **Exploratory Data Analysis (EDA)**  
-- Explore distributions of flag features — colors, symbols, patterns.  
-- Analyze how often symbols like ✝️, ☪️, ⭐, ⚒️ appear and how they relate to happiness and GDP.  
-- Compare flag designs across continents, regions, and income levels.  
+### 2. Exploratory Data Analysis (EDA)
+- **Histogram of Happiness Scores**: Displayed normal-like distribution.
+- **Top 15 Happiest Countries**: Visualized with horizontal bar chart.
+- **Boxplot by Region**: Showed regional happiness variations.
+- **Correlation Heatmap**: Explored inter-variable relations.
+- **Freedom vs Happiness Scatterplot**: Showed clear positive correlation.
 
-### 3. **Correlation Analysis**  
-- Investigate if certain flag elements (colors, symbols) are linked to higher happiness or GDP.  
-- Examine connections between geographic features (landmass, zone) and happiness.  
+### 3. Hypothesis Testing: Freedom vs Happiness
+- **Null Hypothesis**: Freedom and Happiness are not correlated.
+- **Alternative Hypothesis**: There is a positive correlation.
+- **Test**: Pearson Correlation Coefficient
+  - r = 0.6429
+  - p < 0.0001
+- **Conclusion**: Reject null. Freedom positively correlates with Happiness.
 
-### 4. **Visualization**  
-- Create visualizations to show key patterns and relationships.  
-- Use bar charts, heatmaps, scatter plots.  
-- Example visuals:  
-  - Happiness scores by flag colors.  
-  - GDP comparisons for flags with vs. without religious symbols.  
+---
+
+## Machine Learning Model
+
+### Objective
+To predict a country's happiness score based on flag features (colors and symbols).
+
+### Hypothesis
+> **"A country's flag design may contain patterns (colors/symbols) that relate to its happiness level."**
+
+### Model Used
+- **Random Forest Regressor** from scikit-learn
+- 80/20 Train-Test Split
+- Features used: red, green, blue, gold, white, black, orange, crosses, crescents, sunstars, icon presence, etc.
+
+### Results
+- **R² Score**: 0.076 (Low predictive power)
+- **MSE**: 1.46
+- This suggests that **flag designs alone are not strong predictors** of happiness.
+
+### Sample Predictions
+| Country   | Actual Happiness | Predicted | Error |
+|-----------|------------------|-----------|-------|
+| Greece    | 4.86             | 7.38      | 2.52  |
+| Brazil    | 6.98             | 4.92      | 2.06  |
+| Singapore | 6.80             | 5.01      | 1.79  |
 
 ---
 
 ## Possible Challenges  
 
-| Challenge                                  | Solution                                                      |
-|--------------------------------------------|---------------------------------------------------------------|
-| **Country name mismatches**                 | Manual adjustments and fuzzy matching if needed.              |
-| **Missing data in happiness scores**       | Imputation (filling gaps) or excluding some countries.         |
-| **Encoding flag features for analysis**    | Using binary or one-hot encoding for categorical flag data.   |
-| **Finding meaningful correlations**        | Focus on both data-driven results and social science context. |
+| Challenge                              | Solution                                  |
+|----------------------------------------|-------------------------------------------|
+| Country name mismatches                | Normalization and manual corrections      |
+| Dataset size differences               | Focused on common countries               |
+| Flags contain categorical/symbol data  | Binary encoding used                      |
+| Low correlation between flags and happiness | Highlighted in results and future work |
 
 ---
 
 ## Future Work  
 
-- **Add more datasets**: Including data like the Democracy Index or Human Development Index could give a broader perspective on how national symbols relate to well-being.  
-- **Focus on specific regions**: Narrowing down the research to specific groups of countries (e.g., post-colonial states or Nordic countries) may reveal deeper cultural patterns.  
-- **Analyze historical flag changes**: Looking at how flag designs have evolved over time could show connections between national identity shifts and happiness.  
-- **Support findings with academic research**: Bringing in studies from political science and cultural studies would help interpret the meaning of flag elements in relation to social indicators.   
+- Add **Human Development Index** and **Democracy Index** to improve predictions
+- Investigate deeper meaning of **flag color psychology**
+- Analyze **flag changes over time** and link to historical happiness shifts
+- Explore **regional case studies** with cultural/political backgrounds
+- Use **textual/visual analysis** of flag images for more nuanced features
 
 ---
 
-Hypothesis Testing:
-I tested whether the level of Freedom significantly affects the Happiness Score.
-
-Hypotheses:
-H₀: Freedom and Happiness Score are independent.
-
-H₁: There is a significant positive correlation between Freedom and Happiness Score.
-
-Method
-Test Used: Pearson Correlation Test
-
-Variables: Freedom, Happiness Score
-
-Tool: scipy.stats.pearsonr
-
-Result: 
-Correlation coefficient (r): 0.6429
-
-P-value: < 0.0001
-So..
-The result is statistically SIGNIFICANT (p < 0.05)
-
-Conclusion:
-
-We reject the null hypothesis.
-Countries with higher freedom tend to have higher happiness scores.
-
+Thanks for reading this interdisciplinary exploration!  
+A creative blend of data science, symbolism, and social indicators ✨
