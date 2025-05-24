@@ -141,17 +141,6 @@ To predict a country's happiness score based on flag features (colors and symbol
 
 ---
 
-## Future Work  
-
-- Add **Human Development Index** and **Democracy Index** to improve predictions
-- Investigate deeper meaning of **flag color psychology**
-- Analyze **flag changes over time** and link to historical happiness shifts
-- Explore **regional case studies** with cultural/political backgrounds
-- Use **textual/visual analysis** of flag images for more nuanced features
-
----
-
-
 
 
 ## Data Analysis & EDA
@@ -159,103 +148,73 @@ To predict a country's happiness score based on flag features (colors and symbol
 After cleaning, standardizing country names, and merging the datasets (104 common countries), we perform exploratory visualizations:
 
 
-
 ---
 
-## Hypothesis Testing (General)
 
-Test whether any flag feature correlates with happiness:
+## Data Analysis & EDA
 
-```python
-from scipy.stats import pearsonr
-for feat in feature_cols:
-    r, p = pearsonr(merged_df[feat], merged_df['Happiness Score'])
-    print(f"{feat:10s} → r = {r:.2f}, p = {p:.4f}")
-```
+After cleaning, standardizing country names, and merging the datasets (104 common countries), we conducted several visual analyses to uncover patterns in the data.
 
-* **Economy (GDP per Capita)**: r = +0.79, p < 0.0001
-* **Family**: r = +0.76, p < 0.0001
-* **Health (Life Expectancy)**: r = +0.74, p < 0.0001
-* **Freedom**: r = +0.64, p < 0.0001
-* Other flag features (colors/symbols) show weak or non-significant correlations (p > 0.05)
+**1. Distribution of Happiness Score**
+![](happiness_histogram.png)
+The histogram above shows that the bulk of countries score between 4 and 6 on the Happiness Scale, with a gentle bell‑curve shape and a few outliers at the low and high extremes. This suggests a relatively normal distribution of well-being across nations, highlighting that very low (<3) or very high (>7) scores are uncommon.
 
-**Conclusion:** Reject H₀ for socio-economic indicators. Flag‐specific features alone do not significantly correlate with happiness.
+**2. Top 15 Happiest Countries**
+![](top15_happiness.png)
+This horizontal bar chart identifies Switzerland, Iceland, and Denmark at the top, each scoring above 7.0. The tight clustering of the top five countries (Switzerland, Iceland, Denmark, Norway, Canada) emphasizes consistently high well-being in these regions, likely driven by strong social support, economic stability, and quality of life factors.
+
+**3. Top Correlated Features with Happiness Score**
+![](correlation_heatmap.png)
+The condensed heatmap displays the eight features most strongly linked to happiness.
+
+* **GDP per Capita (r≈0.79)** and **Family Support (r≈0.76)** show the highest correlations, underscoring the role of economic prosperity and social networks.
+* **Health (r≈0.74)** and **Freedom (r≈0.64)** also contribute positively, reflecting life expectancy and personal autonomy as key drivers.
+* Flag‑specific attributes (colors, symbols) do not appear in this top‑8 list, indicating they have minimal direct association with national happiness.
+
+These visual insights guide our hypothesis testing and model development in the following sections.
+
+## Hypothesis Testing (General) (General) (General)
+
+We tested each flag feature and socio-economic indicator for statistical correlation with happiness scores. Key findings:
+
+* **Economy (GDP per Capita)**: strong positive correlation (r ≈ +0.79, p < 0.0001)
+* **Family**: strong positive correlation (r ≈ +0.76, p < 0.0001)
+* **Health (Life Expectancy)**: strong positive correlation (r ≈ +0.74, p < 0.0001)
+* **Freedom**: moderate positive correlation (r ≈ +0.64, p < 0.0001)
+* **Flag colors & symbols**: no significant correlations (p > 0.05)
+
+**Conclusion:** Reject H₀ for socio-economic indicators. Flag‐specific features alone do not significantly correlate with happiness. Socio-economic factors are significantly linked to happiness, whereas individual flag features do not show meaningful direct associations. 
 
 ---
 
 ## Machine Learning Model
 
-Convert continuous scores into binary labels around the median (\~5.12):
+To explore predictive power beyond simple correlations, we converted continuous happiness scores into two categories—"high" and "low"—based on the median value (\~5.12). We then trained a Random Forest classifier using 14 binary flag attributes (colors and symbols) as inputs.
 
-```python
-median_score = merged_df['Happiness Score'].median()
-merged_df['Happiness_Level'] = merged_df['Happiness Score'] \
-    .apply(lambda x: 'high' if x >= median_score else 'low')
-```
-
-Train a **Random Forest Classifier** on 14 flag attributes:
-
-```python
-feature_cols = [
-  'green','blue','gold','white','black',
-  'circles','crosses','saltires','quarters',
-  'sunstars','crescent','triangle','icon','animate'
-]
-X = merged_df[feature_cols]
-y = merged_df['Happiness_Level']
-
-X_train, X_test, y_train, y_test = train_test_split(
-  X, y, test_size=0.2, random_state=42)
-
-model = RandomForestClassifier(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
-```
+The model was evaluated on an 80/20 train-test split, and performance was further validated via five-fold cross‑validation.
 
 ---
 
 ## Results & Evaluation
 
-```python
-print("Accuracy:", accuracy_score(y_test, y_pred))
-print(classification_report(y_test, y_pred))
-print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+The classifier achieved a test-set accuracy of **0.57**, and five‑fold cross‑validation yielded a mean accuracy of **0.62**. The confusion matrix indicated a balanced ability to identify both "high" and "low" happiness classes, but overall predictive capacity remained modest.
 
-cv_scores = cross_val_score(model, X, y, cv=5, scoring='accuracy')
-print("5-Fold CV Accuracy Scores:", cv_scores)
-print("Mean CV Accuracy:", cv_scores.mean())
-```
-
-| Metric                  | Value |
-| ----------------------- | ----- |
-| Test Accuracy           | 0.57  |
-| Mean 5-Fold CV Accuracy | 0.62  |
-
-**Confusion Matrix** (true ↓ / pred →):
-
-```
-       low  high
-low      7     3
-high     4     7
-```
-
----
-
-## Challenges
-
-* **Weak signal**: Flag features alone poorly predict happiness class.
-* **Binary binning**: Reduces nuance in continuous scores.
-* **Sample size**: Only \~100 countries after merging.
+These results confirm that flag design alone offers limited power for predicting national happiness levels compared to socio-economic indicators.
 
 ---
 
 ## Future Work
 
-* Experiment with **multi-class** labels (low/medium/high).
-* Test other classifiers (SVM, XGBoost) and tune hyperparameters.
-* Incorporate additional national indicators (HDI, Democracy Index).
-* Explore **feature importance** and SHAP values for interpretability.
-* Analyze **historical flag evolutions** vs. longitudinal happiness trends.
+* Experiment with multi-class happiness labels (low/medium/high).
+* Evaluate other classification algorithms (SVM, XGBoost) and hyperparameter tuning.
+* Integrate additional national metrics (HDI, Democracy Index) to enrich feature space.
+* Apply feature importance and SHAP analysis for deeper interpretability.
+* Study historical flag changes and longitudinal happiness trends.
+
+---
+
+*This interdisciplinary project underscores the nuanced relationship between symbolic national imagery and measurable well-being indicators.*
+
 
 ---
 
