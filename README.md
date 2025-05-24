@@ -151,5 +151,114 @@ To predict a country's happiness score based on flag features (colors and symbol
 
 ---
 
+
+
+
+## Data Analysis & EDA
+
+After cleaning, standardizing country names, and merging the datasets (104 common countries), we perform exploratory visualizations:
+
+
+
+---
+
+## Hypothesis Testing (General)
+
+Test whether any flag feature correlates with happiness:
+
+```python
+from scipy.stats import pearsonr
+for feat in feature_cols:
+    r, p = pearsonr(merged_df[feat], merged_df['Happiness Score'])
+    print(f"{feat:10s} → r = {r:.2f}, p = {p:.4f}")
+```
+
+* **Economy (GDP per Capita)**: r = +0.79, p < 0.0001
+* **Family**: r = +0.76, p < 0.0001
+* **Health (Life Expectancy)**: r = +0.74, p < 0.0001
+* **Freedom**: r = +0.64, p < 0.0001
+* Other flag features (colors/symbols) show weak or non-significant correlations (p > 0.05)
+
+**Conclusion:** Reject H₀ for socio-economic indicators. Flag‐specific features alone do not significantly correlate with happiness.
+
+---
+
+## Machine Learning Model
+
+Convert continuous scores into binary labels around the median (\~5.12):
+
+```python
+median_score = merged_df['Happiness Score'].median()
+merged_df['Happiness_Level'] = merged_df['Happiness Score'] \
+    .apply(lambda x: 'high' if x >= median_score else 'low')
+```
+
+Train a **Random Forest Classifier** on 14 flag attributes:
+
+```python
+feature_cols = [
+  'green','blue','gold','white','black',
+  'circles','crosses','saltires','quarters',
+  'sunstars','crescent','triangle','icon','animate'
+]
+X = merged_df[feature_cols]
+y = merged_df['Happiness_Level']
+
+X_train, X_test, y_train, y_test = train_test_split(
+  X, y, test_size=0.2, random_state=42)
+
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+```
+
+---
+
+## Results & Evaluation
+
+```python
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print(classification_report(y_test, y_pred))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+
+cv_scores = cross_val_score(model, X, y, cv=5, scoring='accuracy')
+print("5-Fold CV Accuracy Scores:", cv_scores)
+print("Mean CV Accuracy:", cv_scores.mean())
+```
+
+| Metric                  | Value |
+| ----------------------- | ----- |
+| Test Accuracy           | 0.57  |
+| Mean 5-Fold CV Accuracy | 0.62  |
+
+**Confusion Matrix** (true ↓ / pred →):
+
+```
+       low  high
+low      7     3
+high     4     7
+```
+
+---
+
+## Challenges
+
+* **Weak signal**: Flag features alone poorly predict happiness class.
+* **Binary binning**: Reduces nuance in continuous scores.
+* **Sample size**: Only \~100 countries after merging.
+
+---
+
+## Future Work
+
+* Experiment with **multi-class** labels (low/medium/high).
+* Test other classifiers (SVM, XGBoost) and tune hyperparameters.
+* Incorporate additional national indicators (HDI, Democracy Index).
+* Explore **feature importance** and SHAP values for interpretability.
+* Analyze **historical flag evolutions** vs. longitudinal happiness trends.
+
+---
+
 Thanks for reading this interdisciplinary exploration!  
 A creative blend of data science, symbolism, and social indicators ✨
+
